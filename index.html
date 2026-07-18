@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPM PENS - Dewan Perwakilan Mahasiswa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-left" onclick="showPage('beranda')">
+    <img src="images/logo.png" class="logo" alt="DPM PENS">
+    <div class="logo-text"><h2>DPM PENS</h2><p>Dewan Perwakilan Mahasiswa</p></div>
+  </div>
+  <ul>
+    <li><a onclick="showPage('beranda')" id="nav-beranda" class="active">Beranda</a></li>
+    <li><a onclick="showPage('tentang')" id="nav-tentang">Tentang</a></li>
+    <li><a onclick="showPage('proker')" id="nav-proker">Program</a></li>
+    <li><a onclick="showPage('parlemen')" id="nav-parlemen">Parlemen</a></li>
+    <li><a onclick="showPage('uukmpens')" id="nav-uukmpens">Dokumen & Arsip</a></li>
+  </ul>
+</nav>
+
+<div class="notif" id="notif"></div>
+
+<div class="page active" id="page-beranda">
+  <section class="hero-slider">
+    <div class="slide active">
+      <img src="images/foto1.JPG" alt="DPM PENS">
+      <div class="overlay"></div>
+      <div class="slide-content">
+        <h1>Selamat Datang di<br><span>DPM PENS</span></h1>
+        <p>Lembaga legislatif mahasiswa Politeknik Elektronika Negeri Surabaya yang berdaulat dan progresif.</p>
+        <div class="hero-buttons">
+          <a class="btn-primary" onclick="showPage('tentang')">Pelajari Lebih Lanjut</a>
+          <a class="btn-secondary" onclick="showPage('parlemen')">Lihat Parlemen</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/foto2.JPG" alt="DPM PENS" style="filter:hue-rotate(15deg) brightness(.9)">
+      <div class="overlay" style="background:linear-gradient(135deg,rgba(8,17,50,.88),rgba(29,78,216,.3))"></div>
+      <div class="slide-content">
+        <h1>Selamat Datang di<br><span>DPM PENS</span></h1>
+        <p>Lembaga legislatif mahasiswa Politeknik Elektronika Negeri Surabaya yang berdaulat dan progresif.</p>
+        <div class="hero-buttons">
+          <a class="btn-primary" onclick="showPage('tentang')">Pelajari Lebih Lanjut</a>
+          <a class="btn-secondary" onclick="showPage('parlemen')">Lihat Parlemen</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/foto1.JPG" alt="DPM PENS" style="filter:brightness(.85) contrast(1.1)">
+      <div class="overlay" style="background:linear-gradient(225deg,rgba(5,11,22,.9),rgba(59,130,246,.15))"></div>
+      <div class="slide-content">
+        <h1>Selamat Datang di<br><span>DPM PENS</span></h1>
+        <p>Lembaga legislatif mahasiswa Politeknik Elektronika Negeri Surabaya yang berdaulat dan progresif.</p>
+        <div class="hero-buttons">
+          <a class="btn-primary" onclick="showPage('tentang')">Pelajari Lebih Lanjut</a>
+          <a class="btn-secondary" onclick="showPage('parlemen')">Lihat Parlemen</a>
+        </div>
+      </div>
+    </div>
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    <div class="slider-dots">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot" onclick="goToSlide(1)"></div>
+      <div class="dot" onclick="goToSlide(2)"></div>
+    </div>
+  </section>
+  
+  <div class="section-alt">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Komisi Aktif</div></div>
+        <div class="stat-card"><div class="stat-num">30+</div><div class="stat-label">Anggota DPM</div></div>
+        <div class="stat-card"><div class="stat-num">20+</div><div class="stat-label">Program</div></div>
+        <div class="stat-card"><div class="stat-num">PERIODE</div><div class="stat-label">2025-2026</div></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="container text-center">
+      <div class="section-badge">TENTANG KAMI</div>
+      <h2 class="section-title">Apa itu DPM PENS?</h2>
+      <p class="section-desc">DPM PENS merupakan lembaga legislatif mahasiswa yang berfungsi sebagai wadah aspirasi, pengawasan, dan penghubung mahasiswa dengan pihak kampus.</p>
+      <div style="margin-top:30px;">
+        <a class="btn-primary" onclick="showPage('tentang')" style="display:inline-block;">Baca Selengkapnya</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-alt">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 40px;">
+        <div class="section-badge">DOKUMEN &amp; ARSIP</div>
+        <h2 class="section-title">Dokumen Terbaru DPM PENS</h2>
+        <p class="section-desc" style="margin: 0 auto;">Undang-Undang, Berita Acara, dan Publikasi terbaru — otomatis diperbarui langsung dari Google Drive.</p>
+      </div>
+
+      <div class="uu-list" id="beranda-dokumen-list">
+        <p style="text-align:center;color:var(--muted);">Memuat dokumen...</p>
+      </div>
+
+      <div style="text-align:center;margin-top:30px;">
+        <a class="btn-primary" onclick="showPage('uukmpens')" style="display:inline-block;">Lihat Semua Dokumen</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-left" style="margin-bottom:12px;cursor:default"><img src="images/logo.png" class="logo" alt="DPM PENS"><div class="logo-text"><h2>DPM PENS</h2><p>Dewan Perwakilan Mahasiswa</p></div></div><p>Lembaga legislatif mahasiswa PENS yang berdaulat secara konstitusi dan progresif dalam aksi.</p></div>
+        <div class="footer-col"><h4>Navigasi</h4><ul><li><a onclick="showPage('beranda')">Beranda</a></li><li><a onclick="showPage('tentang')">Tentang</a></li><li><a onclick="showPage('proker')">Program Kerja</a></li><li><a onclick="showPage('parlemen')">Parlemen</a></li><li><a onclick="showPage('uukmpens')">Dokumen & Arsip</a></li></ul></div>
+        <div class="footer-col"><h4>Kontak</h4><ul><li><a>Instagram: @dpmpens</a></li><li><a>Email: dpmpensofficial@gmail.com</a></li><li><a>Jalan Raya ITS Sukolilo Kampus PENS Surabaya 60111</a></li></ul></div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div class="page" id="page-tentang">
+  <div class="tentang-hero">
+    <div class="container">
+      <div class="section-badge">TENTANG DPM PENS</div>
+      <h2 class="section-title">Mengenal Lebih Dekat<br>DPM PENS</h2>
+      <p class="section-desc">Dewan Perwakilan Mahasiswa Politeknik Elektronika Negeri Surabaya — lembaga legislatif yang hadir untuk mewakili suara seluruh mahasiswa PENS.</p>
+      <div class="tentang-grid">
+        <div>
+          <div class="section-badge" style="margin-bottom:14px;">LATAR BELAKANG</div>
+          <p style="color:var(--gray);line-height:1.9;font-size:.95rem;">DPM PENS adalah lembaga legislatif mahasiswa di lingkungan Politeknik Elektronika Negeri Surabaya. Sebagai representasi demokratis seluruh mahasiswa, DPM PENS memiliki fungsi legislasi, pengawasan, dan advokasi.</p>
+          <p style="color:var(--gray);line-height:1.9;font-size:.95rem;margin-top:16px;">Aspek Trias Politika KM PENS, DPM berperan menjaga keseimbangan kekuasaan antar lembaga dan menjamin hak-hak mahasiswa terpenuhi secara konstitusional.</p>
+          <div style="margin-top:24px;"><a class="btn-secondary" onclick="showPage('parlemen')" style="display:inline-block;">Lihat Parlemen</a></div>
+        </div>
+        <div class="tentang-img-box"><img src="images/foto3.jpeg" alt="DPM PENS"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-alt">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:50px;"><div class="section-badge">VISI & MISI</div><h2 class="section-title">Arah dan Tujuan</h2></div>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Visi</h3>
+          <p>Terwujudnya DPM PENS sebagai lembaga legislatif yang berdaulat secara konstitusi dan progresif dalam aksi demi stabilitas Trias Politika serta kemajuan KM PENS. </p>
+        </div>
+        <div class="about-card">
+          <h3>Misi</h3>
+          <ul class="misi-list">
+            <li>Membangun kembali landasan internal melalui sistem manajemen organisasi yang profesional, transparan, dan berintegritas </li>
+            <li>Menjadikan DPM PENS sebagai wadah terbuka inklusif dan transparan untuk KM PENS</li>
+            <li>Menjalankan fungsi Pengawasan yang tajam dan objektif terhadap lembaga eksekutif demi menjamin akuntabilitas kinerja </li>
+            <li>Meningkatkan kualitas penyerapan aspirasi dan advokasi melalui pendekatan berbasis data untuk menciptakan iklim kesejahteraan mahasiswa yang berkelanjutan. </li>
+            <li>Memulihkan kepercayaan publik melalui komunikasi yang terbuka serta memperluas jaringan strategis dengan mitra intra dan ekstra kampus </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-left" style="margin-bottom:12px;cursor:default"><img src="images/logo.png" class="logo" alt="DPM PENS"><div class="logo-text"><h2>DPM PENS</h2><p>Dewan Perwakilan Mahasiswa</p></div></div><p>Lembaga legislatif mahasiswa PENS yang berdaulat secara konstitusi dan progresif dalam aksi.</p></div>
+        <div class="footer-col"><h4>Navigasi</h4><ul><li><a onclick="showPage('beranda')">Beranda</a></li><li><a onclick="showPage('tentang')">Tentang</a></li><li><a onclick="showPage('proker')">Program</a></li><li><a onclick="showPage('parlemen')">Parlemen</a></li><li><a onclick="showPage('uukmpens')">Dokumen & Arsip</a></li></ul></div>
+        <div class="footer-col"><h4>Kontak</h4><ul><li><a>Instagram: @dpmpens</a></li><li><a>Email: dpmpensofficial@gmail.com</a></li><li><a>Jalan Raya ITS Sukolilo Kampus PENS Surabaya 60111</a></li></ul></div>
+      </div>
+  </footer>
+</div>
+
+<div class="page" id="page-proker">
+  <div class="tentang-hero">
+    <div class="container">
+      <div class="section-badge">PROGRAM KERJA 2025</div>
+      <h2 class="section-title">Agenda & Program<br>DPM PENS</h2>
+      <p class="section-desc">Rangkaian program kerja yang dirancang untuk memberdayakan mahasiswa dan memperkuat peran legislatif DPM PENS.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="container">
+      <div class="section-badge">BADAN RUMAH TANGGA</div>
+      <div class="proker-grid">
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Legislative Voyage</h3>
+          <p>Kegiatan Studi perbandingan yang dibarengi dengan modifikasi dengan organisasi mahasiswa legislatif di luar kampus PENS yang bertujuan menambah referensi dan wawasan guna meningkatkan kualitas operasionalitas DPM PENS .</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>DPM Chapter One: The Beginning</h3>
+          <p>Kegiatan Bonding atau pendekatan antar anggota DPM PENS 2026.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Wear Your Mandate</h3>
+          <p>Kegiatan berupa pengadaan pakaian identitas DPM PENS 2026.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Internalisasi DPM</h3>
+          <p>Kegiatan berupa pertemuan internal antar anggota DPM PENS 2026 dengan BRT sebagai penyelenggara dengan tujuan menciptakan keterbukaan komunikasi dan penyelesaian masalah antar anggota demi menciptakan keharmonisan internal..</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Laporan Kinerja Anggota</h3>
+          <p>Kegiatan pelaporan dan rekap performa pada tiap anggota DPM PENS 2026 dan akan dipublikasikan secara transparan di seluruh kanal resmi DPM PENS.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Legislator Training</h3>
+          <p>Kegiatan seminar dua arah dengan mengundang expert di bidang organisasi mahasiswa legislatif yang bertujuan untuk meningkatkan kapasitas dan kemampuan menjalankan operasional DPM.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-badge">BADAN KOMUNIKASI DAN INFORMASI</div>
+      <div class="proker-grid">
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>LEGFO (Legislatif Info)</h3>
+          <p>Kegiatan pembuatan konten media sosial yang bertujuan memberikan pemahaman atau penyebaran informasi edukatif tentang suatu isu dan/atau informasi yang dianggap berdampak kepada mahasiswa PENS dan masyarakat.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Konten Hari Besar Nasional</h3>
+          <p>Konten Hari Besar merupakan agenda publikasi untuk memperingati hari nasional, keagamaan, dan momen penting lainnya melalui media sosial DPM.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Publikasi Kegiatan</h3>
+          <p>Kegiatan publikasi segala bentuk hasil program legislasi DPM PENS 2026 dan informasi yang dianggap perlu untuk dipublikasikan.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Release Parlemen</h3>
+          <p>Kegiatan publikasi seluruh proses dan jabatan anggota DPM melalui media sosial DPM PENS.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-badge">KOMISI I (LEGISLASI)</div>
+      <div class="proker-grid">
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>GBPK</h3>
+          <p>Proses penyusunan dan penetapan Garis Besar Pokok Kerja Badan Eksekutif Mahasiswa periode 2026.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>Pembentukan RUU Tentang Mekanisme Pembentukan Undang-Undang</h3>
+          <p>Pelaksanaan uji RUU KM PENS tentang mekanisme pembentukan Undang-Undang sebagai dasar hukum dalam pembentukan dan penyusunan aturan untuk keluarga mahasiswa dan diproduksi sebagai undang-undang kurangnya 2 periode.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>PEMILU KM</h3>
+          <p>Melaksanakan pembentukan mekanisme, regulasi pemilihan anggota PRESBEM KM PENS 2026.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-badge">KOMISI II (ASPIRASI)</div>
+      <div class="proker-grid">
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>SERASI (Serap aspirasi)</h3>
+          <p>Kegiatan menyerap aspirasi mahasiswa dalam waktu berkala secara daring dan luring.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>SERSUS (Serap Aspirasi Khusus)</h3>
+          <p>Kegiatan penyerapan aspirasi berbentuk agenda sidak atau PENS dalam waktu tertentu.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>SERAHIN (Serap Aspirasi Himpunan)</h3>
+          <p>Kegiatan sosialisasi aspirasi dengan mengundang agen aspirasi setiap himpunan jurusan di bawah Keluarga Mahasiswa PENS dengan tujuan untuk menampung hasil aspirasi mahasiswa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-badge">KOMISI III (PENGAWASAN)</div>
+      <div class="proker-grid">
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>LPJ TRIWULAN</h3>
+          <p>Kegiatan laporan hasil pengawasan triwulan LPJ kerja pertama BEM PENS periode 2026.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>LPJ SETENGAH PERIODE</h3>
+          <p>Kegiatan laporan pertanggungjawaban setengah periode BEM PENS periode 2026.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>SIDAK (Inspeksi Mendadak)</h3>
+          <p>Kegiatan pengawasan pada tiap-tiap kementerian secara spontan apabila diperlukan berdasarkan aspirasi dan masukan dari Komisi II dan BPH.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>PENGLA (Pengawasan Berkala)</h3>
+          <p>Kegiatan pengawasan berkala pada program kerja yang berpengaruh besar pada kehidupan mahasiswa PENS, seperti PKKMB, banding UKT, dan program kerja BEM lain yang dirasa perlu dilakukan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-badge">KOMISI IV (ADKESMA)</div>
+      <div class="proker-grid">
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>RATIONAL MONITORING</h3>
+          <p>Kegiatan pemantauan secara langsung terhadap berbagai aspek kesejahteraan mahasiswa di lingkungan kampus dengan objektif dan berbasis data yang diperoleh serta diolah oleh Komisi II DPM PENS.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>FORUM ADVOCATE</h3>
+          <p>Forum resmi berupa audiensi antara Komisi IV dengan pihak terkait dan manajemen kampus untuk menyampaikan hasil aspirasi, diskusi, dan monitoring yang diharapkan mahasiswa.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>SIDAK (Inspeksi Mendadak)</h3>
+          <p>Kegiatan pengawasan pada tiap-tiap kementerian secara spontan apabila diperlukan berdasarkan aspirasi dan masukan dari Komisi II dan BPH.</p>
+        </div>
+        <div class="proker-card" onclick="showNotif('Detail program akan segera tersedia!')">
+          <h3>PENYUSUNAN ANGGARAN SUKSESI HMJ</h3>
+          <p>Kegiatan audit dan identifikasi pengajuan proposal Rancangan Anggaran Biaya (RAB) yang diajukan oleh HMJ untuk kegiatan suksesi agar dana dapat tersalurkan sesuai kebutuhan dan hasil aspirasi yang dihimpun oleh Komisi II.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-left" style="margin-bottom:12px;cursor:default"><img src="images/logo.png" class="logo" alt="DPM PENS"><div class="logo-text"><h2>DPM PENS</h2><p>Dewan Perwakilan Mahasiswa</p></div></div><p>Lembaga legislatif mahasiswa PENS yang berdaulat secara konstitusi and progresif dalam aksi.</p></div>
+        <div class="footer-col"><h4>Navigasi</h4><ul><li><a onclick="showPage('beranda')">Beranda</a></li><li><a onclick="showPage('tentang')">Tentang</a></li><li><a onclick="showPage('proker')">Program Kerja</a></li><li><a onclick="showPage('parlemen')">Parlemen</a></li><li><a onclick="showPage('uukmpens')">Dokumen & Arsip</a></li></ul></div>
+        <div class="footer-col"><h4>Kontak</h4><ul><li><a>Instagram: @dpmpens</a></li><li><a>Email: dpmpensofficial@gmail.com</a></li><li><a>Jalan Raya ITS Sukolilo Kampus PENS Surabaya 60111</a></li></ul></div>
+      </div>
+  </footer>
+</div>
+
+<div class="page" id="page-parlemen">
+  <div class="tentang-hero">
+    <div class="container">
+      <div class="section-badge">KABINET DPM PENS 2025</div>
+      <h2 class="section-title">Struktur & Anggota<br>DPM PENS</h2>
+      <p class="section-desc">Kepengurusan DPM PENS periode 2025 yang terdiri dari mahasiswa terpilih dari berbagai jurusan di PENS.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:40px;"><div class="section-badge">PIMPINAN</div><h2 class="section-title">Pimpinan DPM PENS</h2></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:900px;margin:0 auto 60px;">
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')"><div class="parlemen-avatar">W</div><h3>Bendahara Umum</h3><p>Zerlina Ardelia Risdafari Sajida</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')"><div class="parlemen-avatar">K</div><h3>Ketua Umum</h3><p>M. Thaariq Fajra Maulana</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')"><div class="parlemen-avatar">W</div><h3>Sekertaris Jendral</h3><p>Ahmad Dandi Prayoga</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')"><div class="parlemen-avatar">W</div><h3>Sekertaris Umum</h3><p>Faiz Raditya Hadi</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+      </div>
+      
+      <div class="text-center" style="margin-bottom:40px;"><div class="section-badge">BADAN</div><h2 class="section-title">Badan DPM PENS</h2></div>
+      <div style="display:flex;justify-content:center;gap:24px;max-width:900px;margin:0 auto 60px;flex-wrap:wrap;">
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')" style="width:200px;"><div class="parlemen-avatar">K</div><h3>Badan Rumah Tangga</h3><p>Elzia Wanoko</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')" style="width:200px;"><div class="parlemen-avatar">W</div><h3>Badan Komunikasi Dan Informasi</h3><p>Pandu Winata Krisna Putra</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+      </div>
+      
+      <div class="text-center" style="margin-bottom:40px;"><div class="section-badge">KOMISI</div><h2 class="section-title">Komisi DPM PENS</h2></div>
+      <div style="display:flex;justify-content:center;gap:24px;max-width:900px;margin:0 auto 60px;flex-wrap:wrap;">
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')" style="width:200px;"><div class="parlemen-avatar">K</div><h3>KOMISI I</h3><p>M. Aliya Firdaussir Hakim</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')" style="width:200px;"><div class="parlemen-avatar">W</div><h3>KOMISI II</h3><p>Moch Aditya Ramadani</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')" style="width:200px;"><div class="parlemen-avatar">W</div><h3>KOMISI III</h3><p>Muhammad Bagus Iman Prakoso</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil lengkap segera hadir!')" style="width:200px;"><div class="parlemen-avatar">W</div><h3>KOMISI IV</h3><p>Ranaka Damar Fatih Sandjaya</p><div class="parlemen-divisi">DPM PENS 2025</div></div>
+      </div>
+      
+      <div class="text-center" style="margin-bottom:40px;"><div class="section-badge">ANGGOTA</div><h2 class="section-title">Anggota DPM PENS</h2></div>
+      <div class="parlemen-grid">
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">A</div><h3>Alvindio Bambang Bagus P.</h3><p>Badan Rumah Tangga</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">B</div><h3>Muhammad Naufal</h3><p>Badan Rumah Tangga</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">C</div><h3>Ariq Rifky Ghiffari</h3><p>Badan Komunikasi Dan Informasi</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">D</div><h3>M. Zaky Mubarok</h3><p>Badan Komunikasi Dan Informasi</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">E</div><h3>M. Ijaz Faizi</h3><p>Komisi I</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">F</div><h3>Candra Rama Dani</h3><p>Komisi I</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">G</div><h3>Brian Rahmat Jogi</h3><p>Komisi II</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">H</div><h3>M. Surya Fadhil</h3><p>Komisi II</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">H</div><h3>Aryo Ibra Firmansyah</h3><p>Komisi II</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">H</div><h3>Rafli Ardi Ramadhani</h3><p>Komisi III</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">H</div><h3>Nafi' Firdaus Hardyansyah</h3><p>Komisi III</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">H</div><h3>Farhan Daffa Deswata</h3><p>Komisi IV</p><div class="parlemen-divisi">PENS 2025</div></div>
+        <div class="parlemen-card" onclick="showNotif('Profil anggota segera hadir!')"><div class="parlemen-avatar">H</div><h3>Keiven Cicero Nathaniel</h3><p>Komisi IV</p><div class="parlemen-divisi">PENS 2025</div></div>
+        
+      
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-left" style="margin-bottom:12px;cursor:default"><img src="images/logo.png" class="logo" alt="DPM PENS"><div class="logo-text"><h2>DPM PENS</h2><p>Dewan Perwakilan Mahasiswa</p></div></div><p>Lembaga legislatif mahasiswa PENS yang berdaulat secara konstitusi dan progresif dalam aksi.</p></div>
+        <div class="footer-col"><h4>Navigasi</h4><ul><li><a onclick="showPage('beranda')">Beranda</a></li><li><a onclick="showPage('tentang')">Tentang</a></li><li><a onclick="showPage('proker')">Program</a></li><li><a onclick="showPage('parlemen')">Parlemen</a></li><li><a onclick="showPage('uukmpens')">Dokumen & Arsip</a></li></ul></div>
+        <div class="footer-col"><h4>Kontak</h4><ul><li><a>Instagram: @dpmpens</a></li><li><a>Email: dpmpensofficial@gmail.com</a></li><li><a>Jalan Raya ITS Sukolilo Kampus PENS Surabaya 60111</a></li></ul></div>
+      </div>
+  </footer>
+</div>
+
+<div class="page" id="page-aspirasi">
+  <div class="tentang-hero">
+    <div class="container text-center">
+      <div class="section-badge">ASPIRASI MAHASISWA</div>
+      <h2 class="section-title">Sampaikan Suaramu</h2>
+      <p class="section-desc" style="margin:0 auto;">DPM PENS membuka ruang seluas-luasnya untuk menampung aspirasi, kritik, dan masukan dari seluruh mahasiswa PENS.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="aspirasi-form">
+        <div id="aspirasi-form-content">
+          <h3 style="color:#fff;font-size:1.4rem;margin-bottom:6px;">Form Aspirasi</h3>
+          <p style="color:var(--muted);font-size:.85rem;margin-bottom:30px;">Aspirasimu bersifat rahasia dan hanya akan diproses oleh tim DPM PENS.</p>
+          <div class="form-group"><label>Nama Lengkap <span style="color:var(--muted)">(opsional)</span></label><input type="text" placeholder="Masukkan nama lengkap..."></div>
+          <div class="form-group"><label>Jurusan / Prodi</label><select><option value="">-- Pilih Jurusan --</option><option>Teknik Informatika</option><option>Teknik Komputer</option><option>Teknik Telekomunikasi</option><option>Teknik Elektronika</option><option>Teknik Mekatronika</option><option>Teknik Listrik</option><option>Manajemen Bisnis</option><option>Lainnya</option></select></div>
+          <div class="form-group"><label>Kategori Aspirasi</label><select><option value="">-- Pilih Kategori --</option><option>Fasilitas Kampus</option><option>Akademik & Kurikulum</option><option>Kesejahteraan Mahasiswa</option><option>Kegiatan Kemahasiswaan</option><option>Kebijakan Kampus</option><option>Keuangan & Beasiswa</option><option>Lainnya</option></select></div>
+          <div class="form-group"><label>Isi Aspirasi</label><textarea placeholder="Tulis aspirasi, kritik, saran, atau masukan kamu di sini..."></textarea></div>
+          <button class="btn-submit" onclick="submitAspirasi()">Kirim Aspirasi 🚀</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <div class="check">✅</div>
+          <h3>Aspirasi Terkirim!</h3>
+          <p style="color:var(--gray);">Terima kasih telah menyampaikan aspirasimu. DPM PENS akan menindaklanjuti dengan serius.</p>
+          <button class="btn-submit" onclick="resetForm()" style="margin-top:24px;max-width:220px;display:block;margin-left:auto;margin-right:auto;">Kirim Aspirasi Lagi</button>
+        </div>
+      </div>
+      <div class="stats-grid" style="margin-top:50px;">
+        <div class="stat-card"><div class="stat-num">🔒</div><div class="stat-label">Kerahasiaan Terjamin</div></div>
+        <div class="stat-card"><div class="stat-num">⚡</div><div class="stat-label">Respons Cepat</div></div>
+        <div class="stat-card"><div class="stat-num">📊</div><div class="stat-label">Berbasis Data</div></div>
+        <div class="stat-card"><div class="stat-num">🎯</div><div class="stat-label">Ditindaklanjuti</div></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-left" style="margin-bottom:12px;cursor:default"><img src="images/logo.png" class="logo" alt="DPM PENS"><div class="logo-text"><h2>DPM PENS</h2><p>Dewan Perwakilan Mahasiswa</p></div></div><p>Lembaga legislatif mahasiswa PENS yang berdaulat secara konstitusi dan progresif dalam aksi.</p></div>
+        <div class="footer-col"><h4>Navigasi</h4><ul><li><a onclick="showPage('beranda')">Beranda</a></li><li><a onclick="showPage('tentang')">Tentang</a></li><li><a onclick="showPage('proker')">Program</a></li><li><a onclick="showPage('parlemen')">Parlemen</a></li><li><a onclick="showPage('uukmpens')">Dokumen & Arsip</a></li></ul></div>
+        <div class="footer-col"><h4>Kontak</h4><ul><li><a>Instagram: @dpmpens</a></li><li><a>Email: dpmpensofficial@gmail.com</a></li><li><a>Jalan Raya ITS Sukolilo Kampus PENS Surabaya 60111</a></li></ul></div>
+      </div>
+  </footer>
+</div>
+
+<div class="page" id="page-uukmpens">
+
+  <div class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:50px;">
+        <div class="section-badge">DOKUMEN RESMI</div>
+        <h2 class="section-title">Dokumen &amp; Arsip DPM PENS</h2>
+        <p class="section-desc" style="margin:0 auto;">Undang-Undang, Berita Acara, Publikasi, dan dokumen resmi lain yang diterbitkan DPM PENS — otomatis diperbarui langsung dari Google Drive.</p>
+      </div>
+
+      <div class="uu-tabs" style="display:flex;gap:12px;justify-content:center;margin-bottom:30px;flex-wrap:wrap;">
+        <button class="uu-tab active" onclick="filterUU('semua', this)">Semua</button>
+        <button class="uu-tab" onclick="filterUU('uu', this)">Undang-Undang</button>
+        <button class="uu-tab" onclick="filterUU('berita', this)">Berita Acara</button>
+        <button class="uu-tab" onclick="filterUU('publikasi', this)">Publikasi</button>
+      </div>
+
+      <div class="uu-list" id="uu-list">
+        <p style="text-align:center;color:var(--muted);">Memuat dokumen...</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="nav-left" style="margin-bottom:12px;cursor:default"><img src="images/logo.png" class="logo" alt="DPM PENS"><div class="logo-text"><h2>DPM PENS</h2><p>Dewan Perwakilan Mahasiswa</p></div></div><p>Lembaga legislatif mahasiswa PENS yang berdaulat secara konstitusi dan progresif dalam aksi.</p></div>
+        <div class="footer-col"><h4>Navigasi</h4><ul><li><a onclick="showPage('beranda')">Beranda</a></li><li><a onclick="showPage('tentang')">Tentang</a></li><li><a onclick="showPage('proker')">Program</a></li><li><a onclick="showPage('parlemen')">Parlemen</a></li><li><a onclick="showPage('uukmpens')">Dokumen & Arsip</a></li></ul></div>
+        <div class="footer-col"><h4>Kontak</h4><ul><li><a>Instagram: @dpmpens</a></li><li><a>Email: dpmpensofficial@gmail.com</a></li><li><a>Jalan Raya ITS Sukolilo Kampus PENS Surabaya 60111</a></li></ul></div>
+      </div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
